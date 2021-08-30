@@ -1,0 +1,30 @@
+.button {
+    flex: 1;
+    border: none;
+    font-size: 2.5rem; // używaj rem. 1 rem to 10px potem będzie łatwiej z responsywnością :Dd ok
+    &--gray {
+        background-color: $color-gray--1;
+    }
+    &--black {
+        background-color: $color-black;
+    }
+    &--blue {
+        background-color: $color-blue;
+    }
+    color: var(--color-white);
+    //test na teraz
+    //border: 0.15rem solid $color-gray--2;
+    margin: 0.15rem;
+}
+
+.button--gray:hover {
+    filter: brightness(4);
+}
+
+.button--black:hover {
+    filter: brightness(12);
+}
+
+.button--blue:hover {
+    filter: brightness(2);
+}

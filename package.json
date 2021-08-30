@@ -1,0 +1,19 @@
+{
+    "name": "zabwawazpawlem",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "compile:typescript": "tsc -w",
+        "watch:js": "nodemon js/main.js -w",
+        "compile:sass": "node-sass sass/main.scss css/main.css -w"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "node-sass": "^6.0.1",
+        "nodemon": "^2.0.12",
+        "typescript": "^4.4.2"
+    }
+}

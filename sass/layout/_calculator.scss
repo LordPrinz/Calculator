@@ -1,0 +1,32 @@
+.calculator {
+    background-color: inherit;
+    max-width: 60rem;
+    min-height: 75rem;
+    flex: 1;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    .output {
+        display: flex;
+        background-color: $color-gray--2;
+        align-items: flex-end;
+        flex-direction: column;
+        padding: 5rem 0;
+        &__main {
+            font-size: 4rem;
+            margin-top: 0.3rem;
+            color: $color-white;
+        }
+        &__sub {
+            font-size: 1.2rem;
+            color: #9c9c9c;
+        }
+    }
+    .operations {
+        display: grid;
+        .row {
+            width: 100%;
+            align-items: stretch;
+            display: flex;
+        }
+    }
+}
