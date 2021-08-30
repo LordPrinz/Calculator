@@ -10,9 +10,10 @@
         background-color: $color-gray--2;
         align-items: flex-end;
         flex-direction: column;
-        padding: 5rem 0;
+        padding: 4rem 0;
+        font-weight: bold;
         &__main {
-            font-size: 4rem;
+            font-size: 6rem;
             margin-top: 0.3rem;
             color: $color-white;
         }
