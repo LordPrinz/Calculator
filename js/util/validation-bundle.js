@@ -8,3 +8,6 @@ export function validateNumbers(number1, number2) {
         throw error;
     }
 }
+export function isBiggerThanZero(number) {
+    return number >= 0;
+}

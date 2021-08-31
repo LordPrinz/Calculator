@@ -9,3 +9,7 @@ export function validateNumbers(number1: number, number2: number): void {
 		throw error;
 	}
 }
+
+export function isBiggerThanZero(number: number): boolean {
+	return number >= 0;
+}

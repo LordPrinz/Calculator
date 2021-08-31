@@ -4,7 +4,11 @@ import { isNumber } from "./util/validation-bundle.js";
 import {
 	addNumbersHandler,
 	divideNumbersHandler,
+	flipNumberHandler,
 	multiplyNumbersHandler,
+	powerNumberHandler,
+	reverseNumberHandler,
+	sqrtNumbersHandler,
 	subtractNumbersHandler,
 } from "./calc/calculator-functions.js";
 
@@ -16,7 +20,7 @@ let prevState: any = subOutput?.textContent;
 let currentOperation: any = "";
 
 function clear() {
-	currentState = "";
+	currentState = 0;
 	prevState = "";
 	currentOperation = null;
 }
@@ -32,7 +36,7 @@ function appendNumber(number: string) {
 	currentState += number;
 }
 
-function chooseOperation(operation: string) {
+function processOperation(operation: string) {
 	if (currentState === "") {
 		return;
 	}
@@ -59,6 +63,18 @@ function calculate() {
 			break;
 		case "÷":
 			currentState = divideNumbersHandler(prevState, currentState);
+			break;
+		case "sqrt":
+			currentState = sqrtNumbersHandler(prevState);
+			break;
+		case "power":
+			currentState = powerNumberHandler(prevState);
+			break;
+		case "reverse":
+			currentState = reverseNumberHandler(prevState);
+			break;
+		case "flip":
+			currentState = flipNumberHandler(prevState);
 			break;
 		default:
 			return;
@@ -90,6 +106,9 @@ function updateDisplay() {
 	mainOutput.textContent = getDisplayNumber(currentState);
 	if (currentOperation !== null) {
 		subOutput.textContent = `${prevState} ${currentOperation}`;
+		if (prevState[0] === "0" && prevState[1] !== ".") {
+			subOutput.textContent = `${prevState.slice(1)} ${currentOperation}`;
+		}
 	} else {
 		subOutput.textContent = "";
 	}
@@ -120,47 +139,45 @@ function processAction(action: string) {
 			deleteNumber();
 			break;
 		case "reverse":
-			console.log("Process 1/X");
+			processOperation("reverse");
+			calculate();
 			break;
 		case "power":
-			console.log("Process Power");
+			processOperation("power");
+			calculate();
 			break;
 
 		case "sqrt":
-			console.log("Process sqrt");
+			processOperation("sqrt");
+			calculate();
 			break;
 
 		case "divide":
-			console.log("Process divide");
-			chooseOperation("÷");
+			processOperation("÷");
 			break;
 
 		case "times":
-			console.log("Process times");
-			chooseOperation("*");
+			processOperation("*");
 			break;
 
 		case "minus":
-			console.log("Process Minus");
-			chooseOperation("-");
+			processOperation("-");
 			break;
 
 		case "plus":
-			console.log("Process Plus");
-			chooseOperation("+");
+			processOperation("+");
 			break;
 
-		case "sub":
-			console.log("Process Sub");
+		case "flip":
+			processOperation("flip");
+			calculate();
 			break;
 
 		case "dot":
 			console.log("Process dot");
 			break;
 		case "equals":
-			calculate();
-			clearAfterCalculationHandler();
-			updateDisplay();
+			equals();
 			break;
 		default:
 			numberOperationHandler(action);
@@ -173,4 +190,10 @@ function numberOperationHandler(number: any) {
 		return;
 	}
 	appendNumber(number);
+}
+
+function equals() {
+	calculate();
+	clearAfterCalculationHandler();
+	updateDisplay();
 }
