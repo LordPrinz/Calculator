@@ -8,9 +8,3 @@ export function validateNumbers(number1, number2) {
         throw error;
     }
 }
-export function hasDot(variable) {
-    return variable.includes(".");
-}
-export function isEqualDot(variable) {
-    return variable === ".";
-}
