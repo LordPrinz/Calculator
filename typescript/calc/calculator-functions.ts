@@ -12,7 +12,9 @@ function multiply(number1: number, number2: number) {
 function divide(number1: number, number2: number) {
 	return number1 / number2;
 }
-function subtract(number1: number, number2: number) {}
+function subtract(number1: number, number2: number) {
+	return number1 - number2;
+}
 
 export function addNumbersHandler(
 	number1: number,

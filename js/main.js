@@ -135,6 +135,7 @@ function processAction(action) {
             break;
         case "equals":
             calculate();
+            clearAfterCalculationHandler();
             updateDisplay();
             break;
         default:

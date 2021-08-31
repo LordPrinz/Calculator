@@ -8,7 +8,9 @@ function multiply(number1, number2) {
 function divide(number1, number2) {
     return number1 / number2;
 }
-function subtract(number1, number2) { }
+function subtract(number1, number2) {
+    return number1 - number2;
+}
 export function addNumbersHandler(number1, number2) {
     validateNumbers(number1, number2);
     const result = add(+number1, +number2);
