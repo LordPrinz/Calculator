@@ -1,10 +1,12 @@
-var _a, _b;
 import initializeButtons from "./init/initializeButtons.js";
 import transformData from "./processing/transformData.js";
-let mainOutput = (_a = document.querySelector(".output__main")) === null || _a === void 0 ? void 0 : _a.textContent;
-let subOutput = (_b = document.querySelector(".output__sub")) === null || _b === void 0 ? void 0 : _b.textContent;
-let currentState = 0;
-let prevState = 0;
+import { addNumbersHandler } from "./calc/calculator-functions.js";
+import { isNumber } from "./util/validation-bundle.js";
+console.log(addNumbersHandler(2, 2));
+let mainOutput = document.querySelector(".output__main");
+let subOutput = document.querySelector(".output__sub");
+let currentState = mainOutput.textContent;
+let prevState = subOutput.textContent;
 const buttons = initializeButtons();
 buttons.map((element) => {
     element.addEventListener("click", () => {
@@ -13,53 +15,34 @@ buttons.map((element) => {
     });
 });
 function clear() {
-    mainOutput = "";
-    subOutput = "";
-    currentState = 0;
-    prevState = 0;
+    currentState = "";
+    prevState = " ";
+    subOutput.textContent = "";
 }
 function deleteNumber() {
-    mainOutput = mainOutput.toString().slice(0, -1);
+    currentState = currentState.toString().slice(0, -1);
 }
 function appendNumber(number) {
-    if (number === "." && mainOutput.includes(".")) {
-        return;
-    }
-    mainOutput = +mainOutput + number;
+    currentState += number;
 }
-function add(number1, number2) {
-    if (isNaN(+number1) && isNaN(+number2)) {
-        return;
+function updateDisplay(operation = null) {
+    mainOutput.textContent = currentState;
+    if (operation !== null) {
+        prevState = currentState;
+        subOutput.textContent = `${prevState} ${operation}`;
     }
-    return +number1 + +number2;
-}
-function devide(number1, number2) {
-    if (isNaN(+number1) && isNaN(+number2)) {
-        return;
+    else {
+        prevState = "";
     }
-    return +number1 / +number2;
-}
-function subtract(number1, number2) {
-    if (isNaN(+number1) && isNaN(+number2)) {
-        return;
-    }
-    return +number1 - +number2;
-}
-function multiply(number1, number2) {
-    if (isNaN(+number1) && isNaN(+number2)) {
-        return;
-    }
-    return +number1 * +number2;
-}
-function isNumber(variable) {
-    return typeof +variable === "number";
 }
 function numberOperationHandler(number) {
     if (!isNumber(number)) {
         return;
     }
+    appendNumber(number);
 }
 function processAction(action) {
+    let operation;
     switch (action) {
         case "procent":
             console.log("Process %");
@@ -68,10 +51,10 @@ function processAction(action) {
             console.log("Process CE");
             break;
         case "c":
-            console.log("Process C");
+            clear();
             break;
         case "del":
-            console.log("Process del");
+            deleteNumber();
             break;
         case "reverse":
             console.log("Process 1/X");
@@ -84,19 +67,16 @@ function processAction(action) {
             break;
         case "divide":
             console.log("Process divide");
-            devide(mainOutput, subOutput);
             break;
         case "times":
             console.log("Process times");
-            multiply(mainOutput, subOutput);
             break;
         case "minus":
             console.log("Process Minus");
-            subtract(mainOutput, subOutput);
             break;
         case "plus":
             console.log("Process Plus");
-            add(mainOutput, subOutput);
+            operation = "plus";
             break;
         case "sub":
             console.log("Process Sub");
@@ -110,4 +90,11 @@ function processAction(action) {
         default:
             numberOperationHandler(action);
     }
+    updateDisplay(operation);
 }
+setInterval(() => {
+    console.log(`STATE: 
+		prevState: ${prevState}
+		currentState ${currentState}
+	`);
+}, 3000);

@@ -63,10 +63,12 @@ html {
     .calculator .output__main {
       font-size: 6rem;
       margin-top: 0.3rem;
-      color: #e5e5e5; }
+      color: #e5e5e5;
+      min-height: 7.2rem; }
     .calculator .output__sub {
       font-size: 1.2rem;
-      color: #9c9c9c; }
+      color: #9c9c9c;
+      min-height: 1.4rem; }
   .calculator .operations {
     display: grid; }
     .calculator .operations .row {
