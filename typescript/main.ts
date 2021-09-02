@@ -6,12 +6,13 @@ import {
 	divideNumbersHandler,
 	flipNumberHandler,
 	multiplyNumbersHandler,
-	percentageNumberHandler,
+	//percentageNumberHandler,
 	powerNumberHandler,
 	reverseNumberHandler,
 	sqrtNumbersHandler,
 	subtractNumbersHandler,
 } from "./calc/calculator-functions.js";
+import { setError, showErrorMessage } from "./util/error-handling.js";
 
 let mainOutput: any = document.querySelector(".output__main");
 let subOutput: any = document.querySelector(".output__sub");

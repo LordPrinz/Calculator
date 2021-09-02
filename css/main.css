@@ -64,7 +64,8 @@ html {
       font-size: 6rem;
       margin-top: 0.3rem;
       color: #e5e5e5;
-      min-height: 7.2rem; }
+      min-height: 7.2rem;
+      max-width: 600px; }
     .calculator .output__sub {
       font-size: 1.2rem;
       user-select: none;

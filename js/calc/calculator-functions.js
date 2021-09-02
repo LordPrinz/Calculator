@@ -1,17 +1,4 @@
 import { isBiggerThanZero, isNumber, validateNumbers, } from "./../util/validation-bundle.js";
-function percent(number1, percentage, operation) {
-    const percentedValue = (number1 / 100) * percentage;
-    switch (operation) {
-        case "+":
-            return number1 + percentedValue;
-        case "-":
-            return number1 - percentedValue;
-        case "*":
-            return number1 * percentedValue;
-        case "÷":
-            return number1 / percentedValue;
-    }
-}
 function add(number1, number2) {
     return number1 + number2;
 }
@@ -35,10 +22,6 @@ function reverse(number1) {
 }
 function flip(number1) {
     return number1 * -1;
-}
-export function percentageNumberHandler(number1, percentage, operation) {
-    const result = percent(number1, percentage, operation);
-    return result;
 }
 export function addNumbersHandler(number1, number2) {
     validateNumbers(number1, number2);

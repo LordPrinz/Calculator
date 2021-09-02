@@ -1,5 +1,8 @@
-function showErrorMessage(errorMessage: string): void {
-	throw { message: errorMessage };
+export function showErrorMessage(errorMessage: string): void {
+	console.error(errorMessage);
 }
 
-export default showErrorMessage;
+export function setError(errorMessage: string): void {
+	const error = new Error(errorMessage);
+	throw error;
+}
