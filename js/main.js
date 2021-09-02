@@ -106,10 +106,10 @@ buttons.map((element) => {
 function processAction(action) {
     switch (action) {
         case "procent":
-            console.log("Process %");
+            processOperation("percentage");
             break;
         case "ce":
-            console.log("Process CE");
+            currentState = 0;
             break;
         case "c":
             clear();
@@ -146,7 +146,7 @@ function processAction(action) {
             calculate();
             break;
         case "dot":
-            console.log("Process dot");
+            appendNumber(".");
             break;
         case "equals":
             equals();

@@ -67,10 +67,12 @@ html {
       min-height: 7.2rem; }
     .calculator .output__sub {
       font-size: 1.2rem;
+      user-select: none;
       color: #9c9c9c;
       min-height: 1.4rem; }
   .calculator .operations {
-    display: grid; }
+    display: grid;
+    user-select: none; }
     .calculator .operations .row {
       width: 100%;
       align-items: stretch;

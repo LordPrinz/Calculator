@@ -6,6 +6,7 @@ import {
 	divideNumbersHandler,
 	flipNumberHandler,
 	multiplyNumbersHandler,
+	percentageNumberHandler,
 	powerNumberHandler,
 	reverseNumberHandler,
 	sqrtNumbersHandler,
@@ -126,11 +127,12 @@ buttons.map((element) => {
 function processAction(action: string) {
 	switch (action) {
 		case "procent":
-			console.log("Process %");
+			processOperation("percentage");
+
 			break;
 
 		case "ce":
-			console.log("Process CE");
+			currentState = 0;
 			break;
 		case "c":
 			clear();
@@ -174,7 +176,7 @@ function processAction(action: string) {
 			break;
 
 		case "dot":
-			console.log("Process dot");
+			appendNumber(".");
 			break;
 		case "equals":
 			equals();
