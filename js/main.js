@@ -103,6 +103,39 @@ buttons.map((element) => {
         processAction(transformedData);
     });
 });
+document.addEventListener("keydown", (event) => {
+    const pressedKey = event.code;
+    if (pressedKey.includes("Digit")) {
+        appendNumber(pressedKey.slice(5));
+    }
+    if (pressedKey === "NumpadAdd") {
+        processOperation("+");
+    }
+    if (pressedKey === "NumpadSubtract" || pressedKey === "Minus") {
+        processOperation("-");
+    }
+    if (pressedKey === "NumpadEnter" ||
+        pressedKey === "Equal" ||
+        pressedKey === "Enter") {
+        equals();
+    }
+    if (pressedKey === "Slash" || pressedKey === "NumpadDivide") {
+        processOperation("÷");
+    }
+    if (pressedKey === "NumpadMultiply") {
+        processOperation("*");
+    }
+    if (pressedKey === "Comma" ||
+        pressedKey === "Period" ||
+        pressedKey === "NumpadDecimal") {
+        appendNumber(".");
+    }
+    if (pressedKey === "Escape") {
+        clear();
+    }
+    console.log(event.code);
+    updateDisplay();
+});
 function processAction(action) {
     switch (action) {
         case "procent":
