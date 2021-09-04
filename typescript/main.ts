@@ -6,7 +6,7 @@ import {
 	divideNumbersHandler,
 	flipNumberHandler,
 	multiplyNumbersHandler,
-	//percentageNumberHandler,
+	percentageNumberHandler,
 	powerNumberHandler,
 	reverseNumberHandler,
 	sqrtNumbersHandler,
@@ -20,6 +20,7 @@ let subOutput: any = document.querySelector(".output__sub");
 let currentState: any = mainOutput?.textContent;
 let prevState: any = subOutput?.textContent;
 let currentOperation: any = "";
+let isProcentage: boolean = false;
 
 function clear() {
 	currentState = 0;
@@ -54,16 +55,36 @@ function processOperation(operation: string) {
 
 function calculate() {
 	switch (currentOperation) {
+		case "percentage":
+			console.log(currentState + "PROCENTAGE");
+			break;
 		case "+":
+			if (isProcentage) {
+				currentState = percentageNumberHandler(+prevState, currentState, "+");
+				return;
+			}
 			currentState = addNumbersHandler(prevState, currentState);
+
 			break;
 		case "-":
+			if (isProcentage) {
+				currentState = percentageNumberHandler(+prevState, currentState, "-");
+				return;
+			}
 			currentState = subtractNumbersHandler(prevState, currentState);
 			break;
 		case "*":
+			if (isProcentage) {
+				currentState = percentageNumberHandler(+prevState, currentState, "*");
+				return;
+			}
 			currentState = multiplyNumbersHandler(prevState, currentState);
 			break;
 		case "÷":
+			if (isProcentage) {
+				currentState = percentageNumberHandler(+prevState, currentState, "÷");
+				return;
+			}
 			currentState = divideNumbersHandler(prevState, currentState);
 			break;
 		case "sqrt":
@@ -86,6 +107,7 @@ function calculate() {
 function clearAfterCalculationHandler() {
 	currentOperation = null;
 	prevState = "";
+	isProcentage = false;
 }
 
 function getDisplayNumber(number: number) {
@@ -160,15 +182,14 @@ document.addEventListener("keydown", (event) => {
 	if (pressedKey === "Escape") {
 		clear();
 	}
-	console.log(event.code);
 	updateDisplay();
 });
 
 function processAction(action: string) {
 	switch (action) {
 		case "procent":
-			processOperation("percentage");
-
+			isProcentage = true;
+			equals();
 			break;
 
 		case "ce":

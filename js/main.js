@@ -1,12 +1,13 @@
 import initializeButtons from "./init/initializeButtons.js";
 import transformData from "./processing/transformData.js";
 import { isNumber } from "./util/validation-bundle.js";
-import { addNumbersHandler, divideNumbersHandler, flipNumberHandler, multiplyNumbersHandler, powerNumberHandler, reverseNumberHandler, sqrtNumbersHandler, subtractNumbersHandler, } from "./calc/calculator-functions.js";
+import { addNumbersHandler, divideNumbersHandler, flipNumberHandler, multiplyNumbersHandler, percentageNumberHandler, powerNumberHandler, reverseNumberHandler, sqrtNumbersHandler, subtractNumbersHandler, } from "./calc/calculator-functions.js";
 let mainOutput = document.querySelector(".output__main");
 let subOutput = document.querySelector(".output__sub");
 let currentState = mainOutput === null || mainOutput === void 0 ? void 0 : mainOutput.textContent;
 let prevState = subOutput === null || subOutput === void 0 ? void 0 : subOutput.textContent;
 let currentOperation = "";
+let isProcentage = false;
 function clear() {
     currentState = 0;
     prevState = "";
@@ -36,16 +37,35 @@ function processOperation(operation) {
 }
 function calculate() {
     switch (currentOperation) {
+        case "percentage":
+            console.log(currentState + "PROCENTAGE");
+            break;
         case "+":
+            if (isProcentage) {
+                currentState = percentageNumberHandler(+prevState, currentState, "+");
+                return;
+            }
             currentState = addNumbersHandler(prevState, currentState);
             break;
         case "-":
+            if (isProcentage) {
+                currentState = percentageNumberHandler(+prevState, currentState, "-");
+                return;
+            }
             currentState = subtractNumbersHandler(prevState, currentState);
             break;
         case "*":
+            if (isProcentage) {
+                currentState = percentageNumberHandler(+prevState, currentState, "*");
+                return;
+            }
             currentState = multiplyNumbersHandler(prevState, currentState);
             break;
         case "÷":
+            if (isProcentage) {
+                currentState = percentageNumberHandler(+prevState, currentState, "÷");
+                return;
+            }
             currentState = divideNumbersHandler(prevState, currentState);
             break;
         case "sqrt":
@@ -67,6 +87,7 @@ function calculate() {
 function clearAfterCalculationHandler() {
     currentOperation = null;
     prevState = "";
+    isProcentage = false;
 }
 function getDisplayNumber(number) {
     const stringNumber = number.toString();
@@ -133,13 +154,13 @@ document.addEventListener("keydown", (event) => {
     if (pressedKey === "Escape") {
         clear();
     }
-    console.log(event.code);
     updateDisplay();
 });
 function processAction(action) {
     switch (action) {
         case "procent":
-            processOperation("percentage");
+            isProcentage = true;
+            equals();
             break;
         case "ce":
             currentState = 0;

@@ -6,20 +6,20 @@ import {
 
 type operationFunctionType = number | void;
 
-// function percent(number1: number, percentage: number, operation: string) {
-// 	const percentedValue = (number1 / 100) * percentage;
+function percent(number1: number, percentage: number, operation: string) {
+	const percentedValue = (number1 / 100) * percentage;
 
-// 	switch (operation) {
-// 		case "+":
-// 			return number1 + percentedValue;
-// 		case "-":
-// 			return number1 - percentedValue;
-// 		case "*":
-// 			return number1 * percentedValue;
-// 		case "÷":
-// 			return number1 / percentedValue;
-// 	}
-// }
+	switch (operation) {
+		case "+":
+			return number1 + percentedValue;
+		case "-":
+			return number1 - percentedValue;
+		case "*":
+			return number1 * percentedValue;
+		case "÷":
+			return number1 / percentedValue;
+	}
+}
 
 function add(number1: number, number2: number) {
 	return number1 + number2;
@@ -51,14 +51,14 @@ function flip(number1: number) {
 	return number1 * -1;
 }
 
-// export function percentageNumberHandler(
-// 	number1: number,
-// 	percentage: number,
-// 	operation: string
-// ) {
-// 	const result = percent(number1, percentage, operation);
-// 	return result;
-// }
+export function percentageNumberHandler(
+	number1: number,
+	percentage: number,
+	operation: string
+) {
+	const result = percent(number1, percentage, operation);
+	return result;
+}
 
 export function addNumbersHandler(
 	number1: number,
