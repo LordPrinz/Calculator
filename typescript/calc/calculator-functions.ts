@@ -1,3 +1,4 @@
+import { setError } from "../util/error-handling.js";
 import {
 	isBiggerThanZero,
 	isNumber,
@@ -64,7 +65,9 @@ export function addNumbersHandler(
 	number1: number,
 	number2: number
 ): operationFunctionType {
-	validateNumbers(number1, number2);
+	console.log(
+		validateNumbers([+number1, +number2], (number: number) => isNumber(number))
+	);
 	const result = add(+number1, +number2);
 	return result;
 }
@@ -97,9 +100,8 @@ export function subtractNumbersHandler(
 }
 
 export function sqrtNumbersHandler(number1: number) {
-	if (!isNumber(number1) && !isBiggerThanZero(number1)) {
-		const error = new Error("Invalid number");
-		throw error;
+	if (!isNumber(number1) || !isBiggerThanZero(number1)) {
+		setError("Invalid Number!");
 	}
 	const result = sqrt(number1);
 	return result;
@@ -107,8 +109,7 @@ export function sqrtNumbersHandler(number1: number) {
 
 export function powerNumberHandler(number1: number) {
 	if (!isNumber(number1)) {
-		const error = new Error("Invalid number");
-		throw error;
+		setError("Invalid Number!");
 	}
 	const result = power(number1);
 	return result;
@@ -116,8 +117,7 @@ export function powerNumberHandler(number1: number) {
 
 export function reverseNumberHandler(number1: number) {
 	if (!isNumber(number1)) {
-		const error = new Error("Invalid number");
-		throw error;
+		setError("Invalid Number!");
 	}
 	const result = reverse(number1);
 	return result;
@@ -125,8 +125,7 @@ export function reverseNumberHandler(number1: number) {
 
 export function flipNumberHandler(number1: number) {
 	if (!isNumber(number1)) {
-		const error = new Error("Invalid number");
-		throw error;
+		setError("Invalid Number!");
 	}
 	const result = flip(number1);
 	return result;
