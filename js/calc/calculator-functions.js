@@ -61,7 +61,7 @@ export function subtractNumbersHandler(number1, number2) {
     validateNumbers(areNumbersValid);
     return subtract(number1, +number2);
 }
-export function sqrtNumbersHandler(number) {
+export function sqrtNumberHandler(number) {
     const isNumberValid = checkNumbersValidity((number) => isNumber(number) && isBiggerThanZero(number), number);
     validateNumbers(isNumberValid);
     return sqrt(number);

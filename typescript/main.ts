@@ -9,9 +9,10 @@ import {
 	percentageNumberHandler,
 	powerNumberHandler,
 	reverseNumberHandler,
-	sqrtNumbersHandler,
+	sqrtNumberHandler,
 	subtractNumbersHandler,
 } from "./calc/calculator-functions.js";
+
 import { setError, showErrorMessage } from "./util/error-handling.js";
 
 let mainOutput: any = document.querySelector(".output__main");
@@ -88,7 +89,7 @@ function calculate() {
 			currentState = divideNumbersHandler(prevState, currentState);
 			break;
 		case "sqrt":
-			currentState = sqrtNumbersHandler(prevState);
+			currentState = sqrtNumberHandler(prevState);
 			break;
 		case "power":
 			currentState = powerNumberHandler(prevState);

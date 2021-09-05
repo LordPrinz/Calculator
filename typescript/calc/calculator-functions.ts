@@ -123,7 +123,7 @@ export function subtractNumbersHandler(
 	return subtract(number1, +number2);
 }
 
-export function sqrtNumbersHandler(number: number) {
+export function sqrtNumberHandler(number: number) {
 	const isNumberValid = checkNumbersValidity(
 		(number: number) => isNumber(number) && isBiggerThanZero(number),
 		number

@@ -1,7 +1,7 @@
 import initializeButtons from "./init/initializeButtons.js";
 import transformData from "./processing/transformData.js";
 import { isNumber } from "./util/validation-bundle.js";
-import { addNumbersHandler, divideNumbersHandler, flipNumberHandler, multiplyNumbersHandler, percentageNumberHandler, powerNumberHandler, reverseNumberHandler, sqrtNumbersHandler, subtractNumbersHandler, } from "./calc/calculator-functions.js";
+import { addNumbersHandler, divideNumbersHandler, flipNumberHandler, multiplyNumbersHandler, percentageNumberHandler, powerNumberHandler, reverseNumberHandler, sqrtNumberHandler, subtractNumbersHandler, } from "./calc/calculator-functions.js";
 let mainOutput = document.querySelector(".output__main");
 let subOutput = document.querySelector(".output__sub");
 let currentState = mainOutput === null || mainOutput === void 0 ? void 0 : mainOutput.textContent;
@@ -69,7 +69,7 @@ function calculate() {
             currentState = divideNumbersHandler(prevState, currentState);
             break;
         case "sqrt":
-            currentState = sqrtNumbersHandler(prevState);
+            currentState = sqrtNumberHandler(prevState);
             break;
         case "power":
             currentState = powerNumberHandler(prevState);
