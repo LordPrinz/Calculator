@@ -4,6 +4,11 @@ import {
 	checkNumbersValidity,
 	validateNumbers,
 } from "./../util/validation-bundle.js";
+import {
+	calculate,
+	clearAfterCalculationHandler,
+	updateDisplay,
+} from "./calculator-core.js";
 
 type operationFunctionType = number | never;
 
@@ -161,4 +166,10 @@ export function flipNumberHandler(number: number) {
 
 	validateNumbers(isNumberValid);
 	return flip(number);
+}
+
+export function equals() {
+	calculate();
+	clearAfterCalculationHandler();
+	updateDisplay();
 }

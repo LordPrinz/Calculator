@@ -1,58 +1,66 @@
-function isNumber(variable) {
-    return typeof +variable === "number";
-}
+import { clear } from "console";
+import { appendNumber, calculate, deleteNumber, processOperation, updateDisplay, } from "../calc/calculator-core";
+import { equals } from "../calc/calculator-options";
+import { setLocalStorageItem } from "../util/local-storage";
+import { isNumber } from "../util/validation-bundle";
 function numberOperationHandler(number) {
     if (!isNumber(number)) {
         return;
     }
-    console.log(number);
+    appendNumber(number);
 }
 function processAction(action) {
     switch (action) {
         case "procent":
-            console.log("Process %");
+            setLocalStorageItem("isProcentage", true);
+            equals();
             break;
         case "ce":
-            console.log("Process CE");
+            setLocalStorageItem("currentState", 0);
             break;
         case "c":
-            console.log("Process C");
+            clear();
             break;
         case "del":
-            console.log("Process del");
+            deleteNumber();
             break;
         case "reverse":
-            console.log("Process 1/X");
+            processOperation("reverse");
+            calculate();
             break;
         case "power":
-            console.log("Process Power");
+            processOperation("power");
+            calculate();
             break;
         case "sqrt":
-            console.log("Process sqrt");
+            processOperation("sqrt");
+            calculate();
             break;
         case "divide":
-            console.log("Process divide");
+            processOperation("÷");
             break;
         case "times":
-            console.log("Process times");
+            processOperation("*");
             break;
         case "minus":
-            console.log("Process Minus");
+            processOperation("-");
             break;
         case "plus":
-            console.log("Process Plus");
+            processOperation("+");
             break;
-        case "sub":
-            console.log("Process Sub");
+        case "flip":
+            processOperation("flip");
+            calculate();
             break;
         case "dot":
-            console.log("Process dot");
+            appendNumber(".");
             break;
         case "equals":
-            console.log("Process equals");
+            equals();
             break;
         default:
             numberOperationHandler(action);
     }
+    updateDisplay();
 }
 export default processAction;
