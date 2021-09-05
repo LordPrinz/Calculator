@@ -1,6 +1,6 @@
 import initializeButtons from "./init/initializeButtons.js";
 import transformData from "./processing/transformData.js";
-import { isNumber, validateNumbers } from "./util/validation-bundle.js";
+import { isNumber } from "./util/validation-bundle.js";
 import {
 	addNumbersHandler,
 	divideNumbersHandler,

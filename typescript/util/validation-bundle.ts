@@ -5,23 +5,19 @@ export function isNumber(number: number): boolean {
 	return typeof intNumber === "number" && !isNaN(intNumber);
 }
 
-// export function validateNumbers(number1: number, number2: number): void {
-// 	if (!isNumber(+number1) || !isNumber(+number2)) {
-// 		setError("Invalid Number!");
-// 	}
-// }
-
-export function validateNumbers(numbers: any, validateValue: any) {
-	let isValid = true;
-	numbers.map((number: number) => {
-		if (!validateValue(number)) {
-			isValid = false;
-		}
-	});
-
-	return isValid;
+export function checkNumbersValidity(
+	validateNumber: (number: number) => boolean,
+	...numbers: number[]
+) {
+	return numbers.every((number) => validateNumber(+number));
 }
 
 export function isBiggerThanZero(number: number): boolean {
 	return number >= 0;
+}
+
+export function validateNumbers(isValid: boolean) {
+	if (!isValid) {
+		setError("Invalid Number!");
+	}
 }

@@ -1,132 +1,164 @@
-import { setError } from "../util/error-handling.js";
 import {
 	isBiggerThanZero,
 	isNumber,
+	checkNumbersValidity,
 	validateNumbers,
 } from "./../util/validation-bundle.js";
 
-type operationFunctionType = number | void;
+type operationFunctionType = number | never;
 
 function percent(number1: number, percentage: number, operation: string) {
 	const percentedValue = (number1 / 100) * percentage;
-
 	switch (operation) {
 		case "+":
-			return number1 + percentedValue;
+			return +number1 + percentedValue;
 		case "-":
-			return number1 - percentedValue;
+			return +number1 - percentedValue;
 		case "*":
-			return number1 * percentedValue;
+			return +number1 * percentedValue;
 		case "÷":
-			return number1 / percentedValue;
+			return +number1 / percentedValue;
 	}
 }
 
 function add(number1: number, number2: number) {
-	return number1 + number2;
+	return +number1 + +number2;
 }
 
 function multiply(number1: number, number2: number) {
-	return number1 * number2;
+	return +number1 * +number2;
 }
 function divide(number1: number, number2: number) {
-	return number1 / number2;
+	return +number1 / +number2;
 }
 function subtract(number1: number, number2: number) {
-	return number1 - number2;
+	return +number1 - +number2;
 }
 
 function sqrt(number1: number) {
-	return Math.sqrt(number1);
+	return Math.sqrt(+number1);
 }
 
 function power(number1: number) {
-	return number1 * number1;
+	return +number1 * +number1;
 }
 
 function reverse(number1: number) {
-	return 1 / number1;
+	return 1 / +number1;
 }
 
 function flip(number1: number) {
-	return number1 * -1;
+	return +number1 * -1;
 }
 
 export function percentageNumberHandler(
-	number1: number,
-	percentage: number,
+	number: number,
+	percentageValue: number,
 	operation: string
 ) {
-	const result = percent(number1, percentage, operation);
-	return result;
+	const areNumbersValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number,
+		percentageValue
+	);
+
+	validateNumbers(areNumbersValid);
+
+	return percent(number, percentageValue, operation);
 }
 
 export function addNumbersHandler(
 	number1: number,
 	number2: number
 ): operationFunctionType {
-	console.log(
-		validateNumbers([+number1, +number2], (number: number) => isNumber(number))
+	const areNumbersValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number1,
+		number2
 	);
-	const result = add(+number1, +number2);
-	return result;
+
+	validateNumbers(areNumbersValid);
+	return add(number1, number2);
 }
 
 export function multiplyNumbersHandler(
 	number1: number,
 	number2: number
 ): operationFunctionType {
-	validateNumbers(number1, number2);
-	const result = multiply(+number1, +number2);
-	return result;
+	const areNumbersValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number1,
+		number2
+	);
+
+	validateNumbers(areNumbersValid);
+	return multiply(number1, number2);
 }
 
 export function divideNumbersHandler(
 	number1: number,
 	number2: number
 ): operationFunctionType {
-	validateNumbers(number1, number2);
-	const result = divide(+number1, +number2);
-	return result;
+	const areNumbersValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number1,
+		number2
+	);
+
+	validateNumbers(areNumbersValid);
+	return divide(number1, number2);
 }
 
 export function subtractNumbersHandler(
 	number1: number,
 	number2: number
 ): operationFunctionType {
-	validateNumbers(number1, number2);
-	const result = subtract(+number1, +number2);
-	return result;
+	const areNumbersValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number1,
+		number2
+	);
+
+	validateNumbers(areNumbersValid);
+	return subtract(number1, +number2);
 }
 
-export function sqrtNumbersHandler(number1: number) {
-	if (!isNumber(number1) || !isBiggerThanZero(number1)) {
-		setError("Invalid Number!");
-	}
-	const result = sqrt(number1);
-	return result;
+export function sqrtNumbersHandler(number: number) {
+	const isNumberValid = checkNumbersValidity(
+		(number: number) => isNumber(number) && isBiggerThanZero(number),
+		number
+	);
+
+	validateNumbers(isNumberValid);
+	return sqrt(number);
 }
 
-export function powerNumberHandler(number1: number) {
-	if (!isNumber(number1)) {
-		setError("Invalid Number!");
-	}
-	const result = power(number1);
-	return result;
+export function powerNumberHandler(number: number) {
+	const isNumberValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number
+	);
+
+	validateNumbers(isNumberValid);
+	return power(number);
 }
 
-export function reverseNumberHandler(number1: number) {
-	if (!isNumber(number1)) {
-		setError("Invalid Number!");
-	}
-	const result = reverse(number1);
-	return result;
+export function reverseNumberHandler(number: number) {
+	const isNumberValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number
+	);
+
+	validateNumbers(isNumberValid);
+	return reverse(number);
 }
 
-export function flipNumberHandler(number1: number) {
-	if (!isNumber(number1)) {
-		setError("Invalid Number!");
-	}
-	const result = flip(number1);
-	return result;
+export function flipNumberHandler(number: number) {
+	const isNumberValid = checkNumbersValidity(
+		(number: number) => isNumber(number),
+		number
+	);
+
+	validateNumbers(isNumberValid);
+	return flip(number);
 }
