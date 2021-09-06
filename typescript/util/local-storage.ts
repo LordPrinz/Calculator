@@ -1,6 +1,5 @@
 export function setLocalStorageItem(key: string, value: any): void {
 	//* It works to create and update a local storage item
-
 	localStorage.setItem(key, value);
 }
 

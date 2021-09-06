@@ -6,8 +6,7 @@ import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 
 //TODO: Create tests
-//TODO: Fix empty main output bug
-// TODO: Unformit calculator action names
+
 const buttons = loadButtonsFromPage();
 
 buttons.map((element: Element) => {
