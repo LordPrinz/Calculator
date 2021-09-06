@@ -4,6 +4,7 @@ import { showErrorMessage } from "./util/error-handling.js";
 import processButtonClickAction from "./processing/processButtonClickAction.js";
 import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
+
 const buttons = loadButtonsFromPage();
 buttons.map((element) => {
   element.addEventListener("click", () => {

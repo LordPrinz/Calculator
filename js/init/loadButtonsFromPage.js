@@ -1,5 +1,7 @@
-function initializeButtons() {
-    const buttons = Array.prototype.slice.call(document.querySelectorAll(".button"));
-    return buttons;
+function loadButtonsFromPage() {
+  const buttons = Array.prototype.slice.call(
+    document.querySelectorAll(".button")
+  );
+  return buttons;
 }
-export default initializeButtons;
+export default loadButtonsFromPage;
