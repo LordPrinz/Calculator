@@ -1,6 +1,9 @@
 import loadButtonsFromPage from "./init/loadButtonsFromPage.js";
 import transformData from "./processing/transformData.js";
-import { showErrorMessage } from "./util/error-handling.js";
+import {
+	displayErrorMessage,
+	showErrorMessage,
+} from "./util/error-handling.js";
 import processButtonClickAction from "./processing/processButtonClickAction.js";
 import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
@@ -16,7 +19,8 @@ buttons.map((element: Element) => {
 			processButtonClickAction(transformedData);
 		} catch (error: any) {
 			showErrorMessage(error.message);
-			//TODO: Create and show here an error message in main output
+			displayErrorMessage(error.message);
+
 			//TODO: Disable all buttons except clear one
 		}
 	});
@@ -27,7 +31,8 @@ document.addEventListener("keydown", (event) => {
 		processKeyClickedAction(event);
 	} catch (error: any) {
 		showErrorMessage(error.message);
-		//TODO: Create and show here an error message in main output
+		displayErrorMessage(error.message);
+
 		//TODO: Disable all buttons except clear one
 	}
 
