@@ -1,5 +1,5 @@
-import { getDataFromLocalStorage, setLocalStorageItem, } from "../util/local-storage";
-import { addNumbersHandler, divideNumbersHandler, flipNumberHandler, multiplyNumbersHandler, percentageNumberHandler, powerNumberHandler, reverseNumberHandler, sqrtNumberHandler, subtractNumbersHandler, } from "./calculator-options";
+import { getDataFromLocalStorage, setLocalStorageItem, } from "../util/local-storage.js";
+import { addNumbersHandler, divideNumbersHandler, flipNumberHandler, multiplyNumbersHandler, percentageNumberHandler, powerNumberHandler, reverseNumberHandler, sqrtNumberHandler, subtractNumbersHandler, } from "./calculator-options.js";
 const mainOutput = document.querySelector(".output__main");
 const subOutput = document.querySelector(".output__sub");
 let currentOperation = null;
@@ -38,36 +38,36 @@ export function processOperation(operation) {
     setLocalStorageItem("currentState", "");
 }
 export function calculate() {
-    const isProcentage = getDataFromLocalStorage("isProcentage");
+    const isProcentage = getDataFromLocalStorage("isProcentage") === "true";
     const currentState = getDataFromLocalStorage("currentState");
     const prevState = getDataFromLocalStorage("prevState");
     let dataToSave;
     switch (currentOperation) {
         case "+":
             if (isProcentage) {
-                dataToSave = percentageNumberHandler(+prevState, currentState, "+");
-                return;
+                dataToSave = percentageNumberHandler(+prevState, +currentState, "+");
+                break;
             }
             dataToSave = addNumbersHandler(prevState, currentState);
             break;
         case "-":
             if (isProcentage) {
                 dataToSave = percentageNumberHandler(+prevState, currentState, "-");
-                return;
+                break;
             }
             dataToSave = subtractNumbersHandler(prevState, currentState);
             break;
         case "*":
             if (isProcentage) {
                 dataToSave = percentageNumberHandler(+prevState, currentState, "*");
-                return;
+                break;
             }
             dataToSave = multiplyNumbersHandler(prevState, currentState);
             break;
         case "÷":
             if (isProcentage) {
                 dataToSave = percentageNumberHandler(+prevState, currentState, "÷");
-                return;
+                break;
             }
             dataToSave = divideNumbersHandler(prevState, currentState);
             break;

@@ -1,7 +1,7 @@
 import {
 	getDataFromLocalStorage,
 	setLocalStorageItem,
-} from "../util/local-storage";
+} from "../util/local-storage.js";
 import {
 	addNumbersHandler,
 	divideNumbersHandler,
@@ -12,7 +12,7 @@ import {
 	reverseNumberHandler,
 	sqrtNumberHandler,
 	subtractNumbersHandler,
-} from "./calculator-options";
+} from "./calculator-options.js";
 
 const mainOutput: any = document.querySelector(".output__main");
 const subOutput: any = document.querySelector(".output__sub");
@@ -61,7 +61,7 @@ export function processOperation(operation: string) {
 }
 
 export function calculate() {
-	const isProcentage = getDataFromLocalStorage("isProcentage");
+	const isProcentage = getDataFromLocalStorage("isProcentage") === "true";
 	const currentState: any = getDataFromLocalStorage("currentState");
 	const prevState: any = getDataFromLocalStorage("prevState");
 
@@ -70,30 +70,29 @@ export function calculate() {
 	switch (currentOperation) {
 		case "+":
 			if (isProcentage) {
-				dataToSave = percentageNumberHandler(+prevState, currentState, "+");
-				return;
+				dataToSave = percentageNumberHandler(+prevState, +currentState, "+");
+				break;
 			}
 			dataToSave = addNumbersHandler(prevState, currentState);
-
 			break;
 		case "-":
 			if (isProcentage) {
 				dataToSave = percentageNumberHandler(+prevState, currentState, "-");
-				return;
+				break;
 			}
 			dataToSave = subtractNumbersHandler(prevState, currentState);
 			break;
 		case "*":
 			if (isProcentage) {
 				dataToSave = percentageNumberHandler(+prevState, currentState, "*");
-				return;
+				break;
 			}
 			dataToSave = multiplyNumbersHandler(prevState, currentState);
 			break;
 		case "÷":
 			if (isProcentage) {
 				dataToSave = percentageNumberHandler(+prevState, currentState, "÷");
-				return;
+				break;
 			}
 			dataToSave = divideNumbersHandler(prevState, currentState);
 			break;

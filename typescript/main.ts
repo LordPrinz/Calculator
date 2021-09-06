@@ -9,22 +9,22 @@ import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 const buttons = loadButtonsFromPage();
 
 buttons.map((element: any) => {
-  element.addEventListener("click", () => {
-    const transformedData = transformData(element);
-    try {
-      processButtonClickAction(transformedData);
-    } catch (error: any) {
-      showErrorMessage(error.message);
-    }
-  });
+	element.addEventListener("click", () => {
+		const transformedData = transformData(element);
+		try {
+			processButtonClickAction(transformedData);
+		} catch (error: any) {
+			showErrorMessage(error.message);
+		}
+	});
 });
 
 document.addEventListener("keydown", (event) => {
-  try {
-    processKeyClickedAction(event);
-  } catch (error: any) {
-    showErrorMessage(error.message);
-  }
+	try {
+		processKeyClickedAction(event);
+	} catch (error: any) {
+		showErrorMessage(error.message);
+	}
 
-  updateDisplay();
+	updateDisplay();
 });
