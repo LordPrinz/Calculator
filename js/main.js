@@ -6,6 +6,7 @@ import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 
 const buttons = loadButtonsFromPage();
+
 buttons.map((element) => {
   element.addEventListener("click", () => {
     const transformedData = transformData(element);
@@ -16,6 +17,7 @@ buttons.map((element) => {
     }
   });
 });
+
 document.addEventListener("keydown", (event) => {
   try {
     processKeyClickedAction(event);
