@@ -14,6 +14,8 @@ buttons.map((element: Element) => {
 			processButtonClickAction(transformedData);
 		} catch (error: any) {
 			showErrorMessage(error.message);
+			//TODO: Create and show here an error message in main output
+			//TODO: Disable all buttons except clear one
 		}
 	});
 });
@@ -23,6 +25,8 @@ document.addEventListener("keydown", (event) => {
 		processKeyClickedAction(event);
 	} catch (error: any) {
 		showErrorMessage(error.message);
+		//TODO: Create and show here an error message in main output
+		//TODO: Disable all buttons except clear one
 	}
 
 	updateDisplay();
