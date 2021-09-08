@@ -9,6 +9,7 @@ import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 
 //TODO: Create tests
+// TODO: FIX FLIP BUG
 
 const buttons = loadButtonsFromPage();
 

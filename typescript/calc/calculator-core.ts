@@ -31,10 +31,10 @@ export function clear() {
 
 export function deleteNumber() {
 	const currentState: any = getDataFromLocalStorage("currentState");
+	const prevState: any = getDataFromLocalStorage("prevState");
 	console.log(currentState.length);
-	if (currentState.length > 1) {
-		setLocalStorageItem("currentState", currentState.toString().slice(0, -1));
-	}
+
+	setLocalStorageItem("currentState", currentState.toString().slice(0, -1));
 }
 
 export function appendNumber(number: string) {
@@ -114,7 +114,7 @@ export function calculate() {
 		default:
 			return;
 	}
-	setLocalStorageItem("currentState", `0${dataToSave}`);
+	setLocalStorageItem("currentState", dataToSave);
 }
 
 export function clearAfterCalculationHandler() {
