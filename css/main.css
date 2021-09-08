@@ -10,6 +10,9 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (max-width: 22.5em) {
+    html {
+      font-size: 50%; } }
 
 .body {
   font-family: "Roboto", sans-serif;
@@ -48,13 +51,66 @@ html {
   .button--disabled {
     color: #363636; }
 
+.output__main::-webkit-scrollbar-track {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #1f1f1f; }
+
+.output__main::-webkit-scrollbar {
+  width: 3px;
+  height: 7px;
+  background-color: #1f1f1f; }
+
+.output__main::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #555; }
+
+.output__sub::-webkit-scrollbar-track {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #1f1f1f; }
+
+.output__sub::-webkit-scrollbar {
+  width: 3px;
+  height: 7px;
+  background-color: #1f1f1f; }
+
+.output__sub::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #555; }
+
+.body::-webkit-scrollbar-track {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #1f1f1f; }
+
+.body::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+  background-color: #1f1f1f; }
+
+.body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #555; }
+
 .calculator {
+  width: 100%;
+  height: 100%;
   background-color: inherit;
   max-width: 60rem;
   min-height: 75rem;
   flex: 1;
   display: grid;
-  grid-template-rows: min-content 1fr; }
+  grid-template-rows: min-content 1fr;
+  max-height: 57.1rem; }
+  @media only screen and (max-width: 50em) {
+    .calculator {
+      max-height: none;
+      max-width: none;
+      padding: 1rem; } }
+  @media only screen and (max-width: 22.5em) {
+    .calculator {
+      min-height: 100%; } }
   .calculator .output {
     display: flex;
     background-color: #1f1f1f;
@@ -67,12 +123,17 @@ html {
       margin-top: 0.3rem;
       color: #e5e5e5;
       min-height: 7.2rem;
-      max-width: 600px; }
+      max-width: 600px;
+      overflow-x: auto;
+      padding-bottom: 10px; }
     .calculator .output__sub {
       font-size: 1.2rem;
       user-select: none;
       color: #9c9c9c;
-      min-height: 1.4rem; }
+      min-height: 1.4rem;
+      overflow-x: auto;
+      max-width: 600px;
+      padding-bottom: 10px; }
   .calculator .operations {
     display: grid;
     user-select: none; }
