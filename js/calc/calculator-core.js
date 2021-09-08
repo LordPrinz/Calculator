@@ -131,6 +131,6 @@ export function updateDisplay() {
         }
     }
     else {
-        subOutput.textContent = "";
+        subOutput.innerHTML = "&nbsp";
     }
 }

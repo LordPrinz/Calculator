@@ -6,7 +6,7 @@
     min-height: 75rem;
     flex: 1;
     display: grid;
-    grid-template-rows: min-content 1fr;
+    grid-template-rows: 17.9rem 1fr;
     max-height: 57.1rem;
     @media only screen and (max-width: 50em) {
         max-height: none;
@@ -23,6 +23,9 @@
         flex-direction: column;
         padding: 4rem 0;
         font-weight: bold;
+        @media only screen and (max-width: 22.5em) {
+            min-height: 10.9rem;
+        }
         &__main {
             font-size: 6rem;
             margin-top: 0.3rem;
@@ -30,6 +33,7 @@
             min-height: 7.2rem;
             max-width: 600px;
             overflow-x: auto;
+            overflow-y: hidden;
             padding-bottom: 10px;
         }
         &__sub {
@@ -40,6 +44,7 @@
             overflow-x: auto;
             max-width: 600px;
             padding-bottom: 10px;
+            overflow-y: hidden;
         }
     }
     .operations {

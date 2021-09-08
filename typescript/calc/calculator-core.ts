@@ -159,6 +159,6 @@ export function updateDisplay() {
 			subOutput.textContent = `${prevState.slice(1)} ${currentOperation}`;
 		}
 	} else {
-		subOutput.textContent = "";
+		subOutput.innerHTML = "&nbsp";
 	}
 }
