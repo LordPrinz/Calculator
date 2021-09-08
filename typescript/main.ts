@@ -7,6 +7,7 @@ import {
 import processButtonClickAction from "./processing/processButtonClickAction.js";
 import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
+import disableButtons from "./processing/disableButtons.js";
 
 //TODO: Create tests
 // TODO: FIX FLIP BUG
@@ -21,7 +22,7 @@ buttons.map((element: Element) => {
 		} catch (error: any) {
 			showErrorMessage(error.message);
 			displayErrorMessage(error.message);
-
+			disableButtons();
 			//TODO: Disable all buttons except clear one
 		}
 	});
