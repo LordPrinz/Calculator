@@ -31,7 +31,7 @@ export function appendNumber(number) {
     setLocalStorageItem("currentState", currentState + number);
 }
 export function processOperation(operation) {
-    const currentState = getDataFromLocalStorage("currentState");
+    let currentState = getDataFromLocalStorage("currentState");
     const prevState = getDataFromLocalStorage("prevState");
     if (currentState === "") {
         return;
@@ -41,6 +41,7 @@ export function processOperation(operation) {
         clearAfterCalculationHandler();
         updateDisplay();
     }
+    currentState = getDataFromLocalStorage("currentState");
     currentOperation = operation;
     setLocalStorageItem("prevState", currentState);
     setLocalStorageItem("currentState", "");
@@ -95,6 +96,7 @@ export function calculate() {
             return;
     }
     setLocalStorageItem("currentState", dataToSave);
+    console.log(prevState, currentState);
 }
 export function clearAfterCalculationHandler() {
     currentOperation = null;
@@ -120,6 +122,7 @@ export function getDisplayNumber(number) {
 export function updateDisplay() {
     const currentState = getDataFromLocalStorage("currentState");
     const prevState = getDataFromLocalStorage("prevState");
+    console.log(currentState);
     mainOutput.textContent = getDisplayNumber(currentState);
     if (currentOperation !== null) {
         subOutput.textContent = `${prevState} ${currentOperation}`;

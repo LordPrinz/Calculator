@@ -5,6 +5,7 @@ import {
 import {
 	addNumbersHandler,
 	divideNumbersHandler,
+	equals,
 	flipNumberHandler,
 	multiplyNumbersHandler,
 	percentageNumberHandler,
@@ -31,8 +32,6 @@ export function clear() {
 
 export function deleteNumber() {
 	const currentState: any = getDataFromLocalStorage("currentState");
-	//const prevState: any = getDataFromLocalStorage("prevState");
-	//console.log(currentState.length);
 
 	if (currentState.length > 1) {
 		setLocalStorageItem("currentState", currentState.toString().slice(0, -1));
@@ -55,7 +54,7 @@ export function appendNumber(number: string) {
 }
 
 export function processOperation(operation: string) {
-	const currentState: any = getDataFromLocalStorage("currentState");
+	let currentState: any = getDataFromLocalStorage("currentState");
 	const prevState: any = getDataFromLocalStorage("prevState");
 
 	if (currentState === "") {
@@ -66,6 +65,7 @@ export function processOperation(operation: string) {
 		clearAfterCalculationHandler();
 		updateDisplay();
 	}
+	currentState = getDataFromLocalStorage("currentState");
 	currentOperation = operation;
 	setLocalStorageItem("prevState", currentState);
 	setLocalStorageItem("currentState", "");
@@ -123,6 +123,7 @@ export function calculate() {
 			return;
 	}
 	setLocalStorageItem("currentState", dataToSave);
+	console.log(prevState, currentState);
 }
 
 export function clearAfterCalculationHandler() {
@@ -150,6 +151,7 @@ export function getDisplayNumber(number: number) {
 export function updateDisplay() {
 	const currentState: any = getDataFromLocalStorage("currentState");
 	const prevState: any = getDataFromLocalStorage("prevState");
+	console.log(currentState);
 	mainOutput.textContent = getDisplayNumber(currentState);
 	if (currentOperation !== null) {
 		subOutput.textContent = `${prevState} ${currentOperation}`;
