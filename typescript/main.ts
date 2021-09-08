@@ -8,6 +8,7 @@ import processButtonClickAction from "./processing/processButtonClickAction.js";
 import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 import disableButtons from "./processing/disableButtons.js";
+import enableButtons from "./processing/enableButtons.js";
 
 //TODO: Create tests
 // TODO: FIX FLIP BUG
@@ -19,11 +20,11 @@ buttons.map((element: Element) => {
 		const transformedData = transformData(element);
 		try {
 			processButtonClickAction(transformedData);
+			enableButtons();
 		} catch (error: any) {
 			showErrorMessage(error.message);
 			displayErrorMessage(error.message);
 			disableButtons();
-			//TODO: Disable all buttons except clear one
 		}
 	});
 });
@@ -31,11 +32,11 @@ buttons.map((element: Element) => {
 document.addEventListener("keydown", (event) => {
 	try {
 		processKeyClickedAction(event);
+		enableButtons();
 	} catch (error: any) {
 		showErrorMessage(error.message);
 		displayErrorMessage(error.message);
-
-		//TODO: Disable all buttons except clear one
+		disableButtons();
 	}
 
 	updateDisplay();

@@ -25,7 +25,7 @@ html {
   flex: 1;
   border: none;
   font-size: 2rem;
-  color: var(--color-white);
+  color: #e5e5e5;
   margin: 0.15rem; }
   .button--gray {
     background-color: #131313; }
@@ -45,6 +45,8 @@ html {
       background-color: #2277bb; }
     .button--blue:active {
       background-color: #0078d7; }
+  .button--disabled {
+    color: #363636; }
 
 .calculator {
   background-color: inherit;

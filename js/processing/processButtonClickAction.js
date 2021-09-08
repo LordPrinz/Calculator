@@ -18,7 +18,7 @@ function processButtonClickAction(action) {
         case "ce":
             setLocalStorageItem("currentState", 0);
             break;
-        case "c":
+        case "clear":
             clear();
             break;
         case "del":

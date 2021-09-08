@@ -29,6 +29,9 @@
             background-color: #0078d7;
         }
     }
-    color: var(--color-white);
+    &--disabled {
+        color: $font-color-disabled;
+    }
+    color: $color-white;
     margin: 0.15rem;
 }
