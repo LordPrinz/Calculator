@@ -8,6 +8,8 @@ The copy of Windows Calculator app written in JS. Calculator runs only in web br
 
 - Standard Calculator functionality which offers basic operations and evaluates commands immediately as they are entered.
 
+- Responsive.
+
 - Homemade :))
 
 ## Getting started
