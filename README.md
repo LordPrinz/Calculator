@@ -2,7 +2,7 @@
 
 The copy of Windows Calculator app written in JS. Calculator runs only in web browsers.
 
-![Calculator Screenshot]("docs/img/CalculatorScreenshot.png")
+![Calculator Screenshot](docs/img/CalculatorScreenshot.png)
 
 ## Features
 
