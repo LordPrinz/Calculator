@@ -114,7 +114,7 @@ export function calculate() {
 		default:
 			return;
 	}
-	setLocalStorageItem("currentState", `0${dataToSave}`);
+	setLocalStorageItem("currentState", dataToSave);
 }
 
 export function clearAfterCalculationHandler() {
