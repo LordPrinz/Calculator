@@ -16,7 +16,7 @@ The copy of Windows Calculator app written in JS. Calculator runs only in web br
 
 How to run the calculator:
 
-- You have to have access to the web browser
+- You must have access to the web browser
 
 ## Reporting Issues
 
