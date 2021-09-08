@@ -130,6 +130,9 @@ html {
       overflow-x: auto;
       overflow-y: hidden;
       padding-bottom: 10px; }
+      @media only screen and (max-width: 50em) {
+        .calculator .output__main {
+          max-width: calc(100vw - 2rem); } }
     .calculator .output__sub {
       font-size: 1.2rem;
       user-select: none;
