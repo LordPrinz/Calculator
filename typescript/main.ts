@@ -11,7 +11,6 @@ import disableButtons from "./processing/disableButtons.js";
 import enableButtons from "./processing/enableButtons.js";
 
 //TODO: Create tests
-// TODO: FIX FLIP BUG
 
 const buttons = loadButtonsFromPage();
 

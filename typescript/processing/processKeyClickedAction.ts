@@ -1,6 +1,7 @@
 import {
 	appendNumber,
 	clear,
+	deleteNumber,
 	processOperation,
 } from "../calc/calculator-core.js";
 import { equals } from "../calc/calculator-options.js";
@@ -39,6 +40,9 @@ function processKeyClickedAction(event: any) {
 	}
 	if (pressedKey === "Escape") {
 		clear();
+	}
+	if (pressedKey === "Backspace") {
+		deleteNumber();
 	}
 }
 

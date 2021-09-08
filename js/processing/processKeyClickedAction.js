@@ -1,4 +1,4 @@
-import { appendNumber, clear, processOperation, } from "../calc/calculator-core.js";
+import { appendNumber, clear, deleteNumber, processOperation, } from "../calc/calculator-core.js";
 import { equals } from "../calc/calculator-options.js";
 function processKeyClickedAction(event) {
     const pressedKey = event.code;
@@ -29,6 +29,9 @@ function processKeyClickedAction(event) {
     }
     if (pressedKey === "Escape") {
         clear();
+    }
+    if (pressedKey === "Backspace") {
+        deleteNumber();
     }
 }
 export default processKeyClickedAction;

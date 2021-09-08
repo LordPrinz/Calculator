@@ -13,9 +13,15 @@ export function clear() {
 }
 export function deleteNumber() {
     const currentState = getDataFromLocalStorage("currentState");
-    const prevState = getDataFromLocalStorage("prevState");
-    console.log(currentState.length);
-    setLocalStorageItem("currentState", currentState.toString().slice(0, -1));
+    if (currentState.length > 1) {
+        setLocalStorageItem("currentState", currentState.toString().slice(0, -1));
+    }
+    else {
+        setLocalStorageItem("currentState", 0);
+    }
+    if (currentState.length === 2 && currentState.includes("-")) {
+        setLocalStorageItem("currentState", 0);
+    }
 }
 export function appendNumber(number) {
     const currentState = getDataFromLocalStorage("currentState");
