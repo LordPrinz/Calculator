@@ -10,8 +10,6 @@ import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 import disableButtons from "./processing/disableButtons.js";
 import enableButtons from "./processing/enableButtons.js";
 
-//TODO: Create tests
-
 const buttons = loadButtonsFromPage();
 
 buttons.map((element: Element) => {

@@ -96,7 +96,6 @@ export function calculate() {
             return;
     }
     setLocalStorageItem("currentState", dataToSave);
-    console.log(prevState, currentState);
 }
 export function clearAfterCalculationHandler() {
     currentOperation = null;
@@ -122,7 +121,6 @@ export function getDisplayNumber(number) {
 export function updateDisplay() {
     const currentState = getDataFromLocalStorage("currentState");
     const prevState = getDataFromLocalStorage("prevState");
-    console.log(currentState);
     mainOutput.textContent = getDisplayNumber(currentState);
     if (currentOperation !== null) {
         subOutput.textContent = `${prevState} ${currentOperation}`;

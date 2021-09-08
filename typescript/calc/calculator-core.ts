@@ -5,7 +5,6 @@ import {
 import {
 	addNumbersHandler,
 	divideNumbersHandler,
-	equals,
 	flipNumberHandler,
 	multiplyNumbersHandler,
 	percentageNumberHandler,
@@ -123,7 +122,6 @@ export function calculate() {
 			return;
 	}
 	setLocalStorageItem("currentState", dataToSave);
-	console.log(prevState, currentState);
 }
 
 export function clearAfterCalculationHandler() {
@@ -151,7 +149,6 @@ export function getDisplayNumber(number: number) {
 export function updateDisplay() {
 	const currentState: any = getDataFromLocalStorage("currentState");
 	const prevState: any = getDataFromLocalStorage("prevState");
-	console.log(currentState);
 	mainOutput.textContent = getDisplayNumber(currentState);
 	if (currentOperation !== null) {
 		subOutput.textContent = `${prevState} ${currentOperation}`;
