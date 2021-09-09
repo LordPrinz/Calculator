@@ -53,7 +53,7 @@ export function multiplyNumbersHandler(number1, number2) {
     return multiply(number1, number2);
 }
 export function divideNumbersHandler(number1, number2) {
-    const areNumbersValid = checkNumbersValidity((number) => isNumber(number), number1, number2);
+    const areNumbersValid = checkNumbersValidity((number) => isNumber(number) && +number2 !== 0, number1, number2);
     validateNumbers(areNumbersValid);
     return divide(number1, number2);
 }

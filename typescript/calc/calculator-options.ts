@@ -105,12 +105,13 @@ export function divideNumbersHandler(
 	number2: number
 ): operationFunctionType {
 	const areNumbersValid = checkNumbersValidity(
-		(number: number) => isNumber(number),
+		(number: number) => isNumber(number) && +number2 !== 0,
 		number1,
 		number2
 	);
 
 	validateNumbers(areNumbersValid);
+
 	return divide(number1, number2);
 }
 

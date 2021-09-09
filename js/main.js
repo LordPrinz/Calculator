@@ -6,6 +6,7 @@ import { updateDisplay } from "./calc/calculator-core.js";
 import processKeyClickedAction from "./processing/processKeyClickedAction.js";
 import disableButtons from "./processing/disableButtons.js";
 import enableButtons from "./processing/enableButtons.js";
+import { removeErrorOutputClass, setErrorOutputClass, } from "./processing/outputClassHandler.js";
 const buttons = loadButtonsFromPage();
 buttons.map((element) => {
     element.addEventListener("click", () => {
@@ -13,11 +14,13 @@ buttons.map((element) => {
         try {
             processButtonClickAction(transformedData);
             enableButtons();
+            removeErrorOutputClass();
         }
         catch (error) {
             showErrorMessage(error.message);
             displayErrorMessage(error.message);
             disableButtons();
+            setErrorOutputClass();
         }
     });
 });
@@ -25,11 +28,13 @@ document.addEventListener("keydown", (event) => {
     try {
         processKeyClickedAction(event);
         enableButtons();
+        removeErrorOutputClass();
     }
     catch (error) {
         showErrorMessage(error.message);
         displayErrorMessage(error.message);
         disableButtons();
+        setErrorOutputClass();
     }
     updateDisplay();
 });

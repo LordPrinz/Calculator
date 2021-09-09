@@ -24,6 +24,10 @@ html {
   justify-content: center;
   height: 100vh; }
 
+@media only screen and (max-width: 50em) {
+  .invalid {
+    font-size: 4rem !important; } }
+
 .button {
   flex: 1;
   border: none;
