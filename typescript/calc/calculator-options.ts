@@ -151,10 +151,9 @@ export function powerNumberHandler(number: number) {
 
 export function reverseNumberHandler(number: number) {
 	const isNumberValid = checkNumbersValidity(
-		(number: number) => isNumber(number),
+		(number: number) => isNumber(number) && number > 0,
 		number
 	);
-
 	validateNumbers(isNumberValid);
 	return reverse(number);
 }

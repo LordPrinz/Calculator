@@ -73,7 +73,7 @@ export function powerNumberHandler(number) {
     return power(number);
 }
 export function reverseNumberHandler(number) {
-    const isNumberValid = checkNumbersValidity((number) => isNumber(number), number);
+    const isNumberValid = checkNumbersValidity((number) => isNumber(number) && number > 0, number);
     validateNumbers(isNumberValid);
     return reverse(number);
 }
